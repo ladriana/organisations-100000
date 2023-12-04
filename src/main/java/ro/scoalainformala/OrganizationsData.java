@@ -5,9 +5,9 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class OrganizationsData {
     // private static final String TEXT_FILE_PATH = "C:\Users\acron\Documents\cursJAVA\TEME\organisations-100000\organizations-100000.csv";
@@ -94,11 +94,12 @@ public class OrganizationsData {
         return l;
     }
 
-    public List<String> itIndustry() {
-        return organisations.stream()
-                .filter(c -> Objects.equals(c.getIndustry(), "Information Technology / IT"))
+    public ArrayList<String> itIndustry() {
+        return (ArrayList<String>) organisations.stream()
+                //.filter(c -> Objects.equals(c.getIndustry(), "Information Technology / IT"))
+                .filter(c-> "Information Technology / IT".equals(c.getIndustry()))
                 .map((OrganizationRecord x) -> x.getNameYear())
-                .toList();
+                .collect(Collectors.toList());
 
     }
 

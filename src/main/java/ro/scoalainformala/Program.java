@@ -1,7 +1,7 @@
 package ro.scoalainformala;
 
+import java.awt.*;
 import java.util.ArrayList;
-import java.util.List;
 
 public class Program {
     public static void main(String[] args) {
@@ -15,8 +15,10 @@ public class Program {
         System.out.println("Number of companies whose number of employees are greater than 9000:");
         //System.out.println(organizations.countCompanies());
 
-        System.out.println("it industry:");
-        System.out.println(organizations.itIndustry());
+        System.out.println("Companies from it industry:");
+        ArrayList<String> itList = organizations.itIndustry();
+        itList.forEach(System.out::println);
+
 
 
 
