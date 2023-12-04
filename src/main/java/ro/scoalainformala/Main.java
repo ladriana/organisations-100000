@@ -9,7 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
-    private static final String TEXT_FILE_PATH = "D:\\java\\teme\\organizations-100000\\organizations-100000.csv";
+    private static final String TEXT_FILE_PATH = "C:\\Users\\acron\\Documents\\cursJAVA\\TEME\\organisations-100000\\organizations-100000.csv";
+
     public static void main(String[] args) {
         List<OrganizationRecord> organisationsList = new ArrayList<>();
     try {
@@ -17,7 +18,7 @@ public class Main {
         String lineOfText = null;
         while ((lineOfText = br.readLine()) != null) {
 
-           // organisationsList.add(lineOfText);
+           System.out.println(lineOfText);
         }
     } catch (FileNotFoundException e) {
         System.err.println("The file was not found on disk.");
