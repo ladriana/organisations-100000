@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 public class OrganizationsData {
     // private static final String TEXT_FILE_PATH = "C:\Users\acron\Documents\cursJAVA\TEME\organisations-100000\organizations-100000.csv";
@@ -87,18 +88,19 @@ public class OrganizationsData {
     }
 
     public long countCompanies() {
-      long l=  organisations.stream()
+        long l = organisations.stream()
                 .filter(c -> c.getNumberEmployees() > 9000)
                 .count();
         return l;
     }
-/*
-    public List<OrganizationRecord> itIndustry(){
-organisations.stream()
-        .filter(c ->  "Information Technology / IT".equals(c.getIndustry())
-                .map()
 
-    }*/
+    public List<String> itIndustry() {
+        return organisations.stream()
+                .filter(c -> Objects.equals(c.getIndustry(), "Information Technology / IT"))
+                .map((OrganizationRecord x) -> x.getNameYear())
+                .toList();
+
+    }
 
 }
 

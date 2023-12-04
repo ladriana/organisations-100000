@@ -38,6 +38,10 @@ public class OrganizationRecord {
         this.numberEmployees = numberEmployees;
     }
 
+    public String getNameYear() {
+        return name + " " + founded;
+    }
+
     public int getIndex() {
         return index;
     }
