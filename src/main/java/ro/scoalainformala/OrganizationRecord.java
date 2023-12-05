@@ -1,6 +1,6 @@
 package ro.scoalainformala;
 
-public class OrganizationRecord {
+public class OrganizationRecord implements Comparable<OrganizationRecord>{
     public int index;
     private String organizationId;
     private String name;
@@ -40,6 +40,14 @@ public class OrganizationRecord {
 
     public String getNameYear() {
         return name + " " + founded;
+    }
+
+    public String getNameCountryWeb() {
+        return name + " " + country + " " + website;
+    }
+
+    public String getNameCountryFounded() {
+        return name + " " + country + " " + founded;
     }
 
     public int getIndex() {
@@ -112,5 +120,13 @@ public class OrganizationRecord {
 
     public void setNumberEmployees(int numberEmployees) {
         this.numberEmployees = numberEmployees;
+    }
+
+    public int compareTo(OrganizationRecord s) {
+        return this.name != null ?
+                (s.name != null ?
+                        this.name.compareTo(s.name) :
+                        1) :
+                -1;
     }
 }

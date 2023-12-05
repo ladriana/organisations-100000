@@ -1,12 +1,13 @@
 package ro.scoalainformala;
 
+import ro.scoalainformala.comparators.CompanyComparatorByCounty;
+import ro.scoalainformala.comparators.CompanyComparatorByYearFounded;
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class OrganizationsData {
@@ -103,5 +104,29 @@ public class OrganizationsData {
 
     }
 
+    public ArrayList<String> sortedByName() {
+        return (ArrayList<String>) organisations.stream()
+                .filter(c -> c.getNumberEmployees() < 100)
+                .map((OrganizationRecord x) -> x.getNameCountryWeb())
+                .sorted()
+                .collect(Collectors.toList());
+    }
+
+   public ArrayList<String> sortedByCountry() {
+        return (ArrayList<String>) organisations.stream()
+                .filter(c -> c.getNumberEmployees() < 100)
+                //.sorted((s1, s2) -> s1.getCountry().compareTo(s2.getCountry())
+                .sorted(new CompanyComparatorByCounty())
+                .map(OrganizationRecord::getNameCountryWeb)
+                .collect(Collectors.toList());
+    }
+    public ArrayList<String> sortedByFounded() {
+        return (ArrayList<String>) organisations.stream()
+                .filter(c -> c.getNumberEmployees() < 100)
+               // .sorted((s1, s2) -> s1.getFounded()-s2.getFounded())
+                .sorted(new CompanyComparatorByYearFounded())
+                .map(OrganizationRecord::getNameCountryFounded)
+                .collect(Collectors.toList());
+    }
 }
 

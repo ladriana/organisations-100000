@@ -2,11 +2,13 @@ package ro.scoalainformala;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.TreeSet;
 
 public class Program {
     public static void main(String[] args) {
         OrganizationsData organizations = new OrganizationsData();
-        organizations.loadDataFromFile("D:\\java\\teme\\organizations-100000\\organizations-100000.csv");
+        organizations.loadDataFromFile("C:\\Users\\acron\\Documents\\cursJAVA\\TEME\\organisations-100000\\organizations-100000.csv");
       //  System.out.println(organizations.getNumberOfRecords());
         System.out.println("Names of the companies which are from a country starting with the letter 'R':");
        //organizations.companyR();
@@ -16,11 +18,20 @@ public class Program {
         //System.out.println(organizations.countCompanies());
 
         System.out.println("Companies from it industry:");
-        ArrayList<String> itList = organizations.itIndustry();
-        itList.forEach(System.out::println);
+        //ArrayList<String> itList = organizations.itIndustry();
+       // itList.forEach(System.out::println);
 
+        System.out.println("Companies with less than 100 employees:");
+        //ArrayList<String> listE = organizations.sortedByName();
+       // listE.forEach(System.out::println);
 
+        System.out.println("Companies with less than 100 employees sorted by country:");
+       // ArrayList<String> listC= organizations.sortedByCountry();
+        //listC.forEach(System.out::println);
 
+        System.out.println("Companies with less than 100 employees sorted by founded year:");
+        ArrayList<String> listY = organizations.sortedByFounded();
+        listY.forEach(System.out::println);
 
     }
 }
